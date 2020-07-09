@@ -1248,6 +1248,9 @@ bool GetProjectileData(CachedEntity *weapon, float &speed, float &gravity)
     case CL_CLASS(CTFRocketLauncher):
     {
         rspeed = 1100.0f;
+        // Libery Launcher
+        if (CE_INT(weapon, netvar.iItemDefinitionIndex) == 414)
+            rspeed *= 1.4f;
         break;
     }
     case CL_CLASS(CTFCannon):
@@ -1257,15 +1260,13 @@ bool GetProjectileData(CachedEntity *weapon, float &speed, float &gravity)
     }
     case CL_CLASS(CTFGrenadeLauncher):
     {
+        rspeed = 1100.0f;
+        rgrav  = 0.25f;
         IF_GAME(IsTF2())
         {
-            rspeed = 1200.0f;
-            rgrav  = 0.4f;
-        }
-        else IF_GAME(IsTF2C())
-        {
-            rspeed = 1100.0f;
-            rgrav  = 0.5f;
+            // Loch'n Load
+            if (CE_INT(weapon, netvar.iItemDefinitionIndex) == 308)
+                rspeed *= 1.25f;
         }
         break;
     }

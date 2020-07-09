@@ -1171,7 +1171,7 @@ int BestHitbox(CachedEntity *target)
                     headonly = false;
                 // Rocket launcher
             }
-            else if (ci == CL_CLASS(CTFRocketLauncher) || ci == CL_CLASS(CTFRocketLauncher_AirStrike) || ci == CL_CLASS(CTFRocketLauncher_DirectHit) || ci == CL_CLASS(CTFRocketLauncher_Mortar) || ci == CL_CLASS(CTFPipebombLauncher))
+            else if (ci == CL_CLASS(CTFPipebombLauncher) || ci == CL_CLASS(CTFGrenadeLauncher) || ci == CL_CLASS(CTFRocketLauncher) || ci == CL_CLASS(CTFRocketLauncher_AirStrike) || ci == CL_CLASS(CTFRocketLauncher_DirectHit) || ci == CL_CLASS(CTFRocketLauncher_Mortar) || ci == CL_CLASS(CTFPipebombLauncher))
             {
                 preferred = hitbox_t::hip_L;
             }
