@@ -40,6 +40,25 @@ struct flag_info
     }
 };
 
+struct pl_info
+{
+    CachedEntity *ent;
+    std::optional<Vector> position;
+    pl_info(){};
+};
+
+#define MAX_CONTROL_POINTS 8
+#define MAX_PREVIOUS_POINTS 3
+struct cp_info
+{
+    // Index in the ObjectiveResource
+    int cp_index{ -1 };
+    std::optional<Vector> position;
+    // For BLU and RED to show who can and who cannnot cap
+    std::array<bool, 2> can_cap{};
+    cp_info(){};
+};
+
 namespace flagcontroller
 {
 // Use incase you don't get the needed information from the functions below
@@ -52,3 +71,15 @@ CachedEntity *getCarrier(int team);
 ETFFlagStatus getStatus(CachedEntity *flag);
 ETFFlagStatus getStatus(int team);
 } // namespace flagcontroller
+
+namespace plcontroller
+{
+// Get the closest Control Payload
+std::optional<Vector> getClosestPayload(Vector source, int team);
+} // namespace plcontroller
+
+namespace cpcontroller
+{
+// Get the closest Control Point we can cap
+std::optional<Vector> getClosestControlPoint(Vector source, int team);
+} // namespace cpcontroller
